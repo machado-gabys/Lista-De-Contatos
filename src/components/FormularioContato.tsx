@@ -30,7 +30,7 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
     };
 
     return (
-        <form onSubmit={handleSubmit}> {/* Corrigido para <form> */}
+        <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 placeholder="Nome"
