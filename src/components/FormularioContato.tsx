@@ -1,14 +1,8 @@
 // src/components/FormularioContato.tsx
 import React, { useEffect, useState } from 'react';
-import { Contato } from '../Teste Guarida/Contato';
+import { FormularioContatoProps } from './interfaces/IFormularioContato';
 
-interface Props {
-  contatoAtual: Contato | null;
-  onAdicionar: (contato: Contato) => void;
-  onEditar: (contato: Contato) => void;
-}
-
-const FormularioContato: React.FC<Props> = ({ contatoAtual, onAdicionar, onEditar }) => {
+const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onAdicionar, onEditar }) => {
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
 

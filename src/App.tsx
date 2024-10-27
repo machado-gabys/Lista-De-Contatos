@@ -1,6 +1,6 @@
 // src/App.tsx
-import './App.css';
-import Main from './Main'; // Importando o componente Main que contém a lógica da aplicação
+import Main from './Main';
+import './styles/App.css';
 
 function App() {
   return (

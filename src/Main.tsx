@@ -34,12 +34,13 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <h1>Lista de Contatos</h1>
+      <center>
+      <h1>Contatos</h1>
       <FormularioContato 
         contatoAtual={contatoAtual} 
         onAdicionar={adicionarContato} 
         onEditar={editarContato}
-      />
+      /></center>
       <ListaContatos 
         contatos={contatos} 
         onEditar={setContatoAtual} 
