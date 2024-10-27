@@ -1,11 +1,11 @@
 // src/components/ListaContato.tsx
 import React from 'react';
-import { Contato } from '../Teste Guarida/Contato';
+import { ContatoProps } from './interfaces/IContato';
 
 interface Props {
-  contatos: Contato[];
-  onEditar: (contato: Contato) => void;
-  onRemover: (id: number) => void;
+  contatos: ContatoProps[];
+  onEditar: (contato: ContatoProps) => void;
+  onRemover: (id: string) => void;
 }
 
 const ListaContatos: React.FC<Props> = ({ contatos, onEditar, onRemover }) => {

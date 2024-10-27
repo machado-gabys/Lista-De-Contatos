@@ -1,8 +1,8 @@
-// src/components/FormularioContato.types.ts
-import { Contato } from '../../Teste Guarida/Contato';
+// src/components/interfaces/IFormularioContato.ts
+import { ContatoProps } from './IContato';
 
 export interface FormularioContatoProps {
-  contatoAtual: Contato | null;
-  onAdicionar: (contato: Contato) => void;
-  onEditar: (contato: Contato) => void;
+  contatoAtual: ContatoProps | null;
+  onAdicionar: (contato: ContatoProps) => void;
+  onEditar: (contato: ContatoProps) => void;
 }
