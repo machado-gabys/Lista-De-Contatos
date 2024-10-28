@@ -32,7 +32,13 @@ function App() {
     const novosContatos = contatos.map(c => (c.id === contatoAtualizado.id ? contatoAtualizado : c));
     setContatos(novosContatos);
     localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
-    setContatoAtual(null);
+    setContatoAtual(null); // Reseta o contato atual após a edição
+  };
+
+  const removerContato = (id: string) => {
+    const novosContatos = contatos.filter(c => c.id !== id);
+    setContatos(novosContatos);
+    localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
   };
 
   return (
@@ -54,7 +60,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<div />} />
-          <Route path="/lista" element={<ListaContatosPage />} />
+          <Route path="/lista" element={<ListaContatosPage contatos={contatos} onEditar={setContatoAtual} onRemover={removerContato} />} />
         </Routes>
       </div>
     </Router>

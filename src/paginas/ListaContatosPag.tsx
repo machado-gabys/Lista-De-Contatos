@@ -1,33 +1,19 @@
 // src/pages/ListaContatosPag.tsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import ListaContatos from '../components/ListaContato';
 import { ContatoProps } from '../components/interfaces/IContato';
 
-const ListaContatosPag: React.FC = () => {
-  const [contatos, setContatos] = useState<ContatoProps[]>([]);
+interface Props {
+  contatos: ContatoProps[];
+  onEditar: (contato: ContatoProps) => void;
+  onRemover: (id: string) => void;
+}
 
-  useEffect(() => {
-    const contatosSalvos = localStorage.getItem('contatos');
-    if (contatosSalvos) {
-      try {
-        const parsedContatos = JSON.parse(contatosSalvos);
-        setContatos(parsedContatos);
-      } catch (error) {
-        console.error("Erro ao carregar contatos do localStorage:", error);
-      }
-    }
-  }, []);
-
-  const removerContato = (id: string) => {
-    const novosContatos = contatos.filter(c => c.id !== id);
-    setContatos(novosContatos);
-    localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
-  };
-
+const ListaContatosPag: React.FC<Props> = ({ contatos, onEditar, onRemover }) => {
   return (
     <div>
       <h1>Lista de Contatos</h1>
-      <ListaContatos contatos={contatos} onEditar={() => {}} onRemover={removerContato} />
+      <ListaContatos contatos={contatos} onEditar={onEditar} onRemover={onRemover} />
     </div>
   );
 };
