@@ -4,6 +4,7 @@ body {
   margin: 0;
   height: 100vh;
   background: linear-gradient(to bottom, #EAB8EA, #A3C1E0, #B8E3A0);
+  font-family: Arial, sans-serif; /* Fonte mais suave */
 }
 
 .App {
@@ -17,7 +18,9 @@ body {
 h1 {
   color: #333; 
   margin-bottom: 20px; 
+  font-size: 2em; /* Tamanho da fonte aumentado */
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -40,16 +43,21 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  width: 100%;
+  width: 150px; /* Largura reduzida */
+  margin: 10px 0; /* Espaçamento acima e abaixo */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: background-color 0.3s, transform 0.2s; /* Transições suaves */
 }
 
 button:hover {
   background-color: #218838;
+  transform: translateY(-2px); /* Eleva o botão ao passar o mouse */
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 20px 0; /* Espaçamento acima e abaixo da lista */
 }
 
 li {
@@ -63,4 +71,18 @@ li {
 li span {
   flex-grow: 1;
   margin-right: 10px;
+}
+
+/* src/styles/App.css */
+.erro {
+  color: red;
+  font-size: 0.8em;
+}
+
+/* Centralizar o botão de listar */
+.lista-button-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  width: 100%; /* Largura total do contêiner */
+  margin-top: 10px; /* Margem superior */
 }
