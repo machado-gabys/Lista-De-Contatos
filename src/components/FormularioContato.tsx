@@ -33,7 +33,6 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
         e.preventDefault();
         let valid = true;
 
-        // Validação do nome
         if (!validarNome(nome.trim())) {
             setErroNome('O nome deve conter apenas letras.');
             valid = false;
@@ -41,7 +40,6 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
             setErroNome('');
         }
 
-        // Validação do telefone
         if (!validarTelefone(telefone.trim())) {
             setErroTelefone('O telefone deve conter apenas números e alguns símbolos.');
             valid = false;
