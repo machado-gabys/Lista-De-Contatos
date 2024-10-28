@@ -1,3 +1,4 @@
+// src/components/FormularioContato.tsx
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FormularioContatoProps } from './interfaces/IFormularioContato';
@@ -5,6 +6,8 @@ import { FormularioContatoProps } from './interfaces/IFormularioContato';
 const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onAdicionar, onEditar }) => {
     const [nome, setNome] = useState('');
     const [telefone, setTelefone] = useState('');
+    const [erroNome, setErroNome] = useState('');
+    const [erroTelefone, setErroTelefone] = useState('');
 
     useEffect(() => {
         if (contatoAtual) {
@@ -16,13 +19,40 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
         }
     }, [contatoAtual]);
 
+    const validarNome = (nome: string): boolean => {
+        const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/; // Permite letras e espaços
+        return nomeRegex.test(nome);
+    };
+
+    const validarTelefone = (telefone: string): boolean => {
+        const telefoneRegex = /^[0-9\-\+\(\) ]+$/; // Permite números e alguns símbolos
+        return telefoneRegex.test(telefone);
+    };
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (nome.trim() && telefone.trim()) {
-            const novoContato = contatoAtual
-                ? { ...contatoAtual, nome, telefone } // Atualiza o contato existente
-                : { id: uuidv4(), nome, telefone }; // Cria um novo contato
+        let valid = true; // Controla se o formulário é válido
 
+        // Validação do nome
+        if (!validarNome(nome.trim())) {
+            setErroNome('O nome deve conter apenas letras.');
+            valid = false;
+        } else {
+            setErroNome('');
+        }
+
+        // Validação do telefone
+        if (!validarTelefone(telefone.trim())) {
+            setErroTelefone('O telefone deve conter apenas números e alguns símbolos.');
+            valid = false;
+        } else {
+            setErroTelefone('');
+        }
+
+        if (valid) {
+            const novoContato = contatoAtual
+                ? { ...contatoAtual, nome, telefone }
+                : { id: uuidv4(), nome, telefone };
             contatoAtual ? onEditar(novoContato) : onAdicionar(novoContato);
             setNome('');
             setTelefone('');
@@ -38,6 +68,7 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
                 onChange={(e) => setNome(e.target.value)}
                 aria-label="Nome"
             />
+            {erroNome && <div className="erro">{erroNome}</div>}
             <input
                 type="tel"
                 placeholder="Telefone"
@@ -45,6 +76,7 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
                 onChange={(e) => setTelefone(e.target.value)}
                 aria-label="Telefone"
             />
+            {erroTelefone && <div className="erro">{erroTelefone}</div>}
             <button type="submit">{contatoAtual ? 'Editar' : 'Adicionar'}</button>
         </form>
     );
