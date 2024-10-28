@@ -45,7 +45,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>Minha Lista de Contatos</h1>
+          <h1>Lista de Contatos</h1>
           <FormularioContato
             contatoAtual={contatoAtual}
             onAdicionar={adicionarContato}

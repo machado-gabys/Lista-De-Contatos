@@ -12,7 +12,7 @@ interface Props {
 const ListaContatosPag: React.FC<Props> = ({ contatos, onEditar, onRemover }) => {
   return (
     <div>
-      <h1>Lista de Contatos</h1>
+      <h1>Contatos Salvos</h1>
       <ListaContatos contatos={contatos} onEditar={onEditar} onRemover={onRemover} />
     </div>
   );
