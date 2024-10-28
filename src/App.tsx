@@ -25,20 +25,20 @@ function App() {
   const adicionarContato = (contato: ContatoProps) => {
     const novosContatos = [...contatos, contato];
     setContatos(novosContatos);
-    localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
+    localStorage.setItem('contatos', JSON.stringify(novosContatos));
   };
 
   const editarContato = (contatoAtualizado: ContatoProps) => {
     const novosContatos = contatos.map(c => (c.id === contatoAtualizado.id ? contatoAtualizado : c));
     setContatos(novosContatos);
-    localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
-    setContatoAtual(null); // Reseta o contato atual após a edição
+    localStorage.setItem('contatos', JSON.stringify(novosContatos));
+    setContatoAtual(null);
   };
 
   const removerContato = (id: string) => {
     const novosContatos = contatos.filter(c => c.id !== id);
     setContatos(novosContatos);
-    localStorage.setItem('contatos', JSON.stringify(novosContatos)); // Atualiza o localStorage
+    localStorage.setItem('contatos', JSON.stringify(novosContatos));
   };
 
   return (

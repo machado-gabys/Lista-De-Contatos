@@ -20,18 +20,18 @@ const FormularioContato: React.FC<FormularioContatoProps> = ({ contatoAtual, onA
     }, [contatoAtual]);
 
     const validarNome = (nome: string): boolean => {
-        const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/; // Permite letras e espaços
+        const nomeRegex = /^[A-Za-zÀ-ÿ\s]+$/;
         return nomeRegex.test(nome);
     };
 
     const validarTelefone = (telefone: string): boolean => {
-        const telefoneRegex = /^[0-9\-\+\(\) ]+$/; // Permite números e alguns símbolos
+        const telefoneRegex = /^[0-9\-\+\(\) ]+$/;
         return telefoneRegex.test(telefone);
     };
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        let valid = true; // Controla se o formulário é válido
+        let valid = true;
 
         // Validação do nome
         if (!validarNome(nome.trim())) {
